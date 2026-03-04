@@ -99,6 +99,15 @@ namespace Content.Shared.Atmos
         public const float OxygenMolesGasMiner = MolesCellGasMiner * OxygenStandard;
         public const float NitrogenMolesGasMiner = MolesCellGasMiner * NitrogenStandard;
 
+        /// GREENSHIFT ADDITION - Adds hallway standards including water vapor
+        public const float GSOxygenHallStandard = 0.22f;
+        public const float GSNitrogenHallStandard = 0.62f;
+        public const float GSWaterVaporHallStandard = 0.16f;
+
+        public const float GSOxygenMolesHallStandard = MolesCellStandard * GSOxygenHallStandard;
+        public const float GSNitrogenMolesHallStandard = MolesCellStandard * GSNitrogenHallStandard;
+        public const float GSWaterVaporMolesHallStandard = MolesCellStandard * GSWaterVaporHallStandard;
+
         #endregion
 
         /// <summary>
