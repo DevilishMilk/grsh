@@ -43,6 +43,7 @@
 
 - type: chameleonOutfit
   id: WardenChameleonOutfit
+  abstract: true # GREENSHIFT
   job: Warden
   hasMindShield: true
   equipment:

@@ -26,6 +26,7 @@
 
 - type: chameleonOutfit
   id: MedicalInternChameleonOutfit
+  abstract: true # GREENSHIFT
   job: MedicalIntern
   equipment:
     head: ClothingHeadHatBeretMedic
