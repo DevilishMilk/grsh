@@ -41,6 +41,7 @@
 
 - type: chameleonOutfit
   id: SecurityCadetChameleonOutfit
+  abstract: true # GREENSHIFT
   job: SecurityCadet
   hasMindShield: true
   equipment:
