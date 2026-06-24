@@ -52,6 +52,7 @@ public sealed class GSCoalShovelingSystem : EntitySystem
             }
 
             shovel.HasCoal = true;
+            Dirty(args.Used, shovel);
         }
     }
 }
