@@ -7,6 +7,7 @@ using Content.Shared.Item.ItemToggle;
 using Content.Shared.Maps;
 using Content.Shared.Popups;
 using Content.Shared.Tools.Components;
+using Content.Shared.Wieldable.Components;
 using JetBrains.Annotations;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
@@ -243,6 +244,17 @@ public abstract partial class SharedToolSystem : EntitySystem
         // check if the tool can do what's required
         if (!toolComponent.Qualities.ContainsAll(toolQualitiesNeeded))
             return false;
+
+        // GREENSHIFT: check if the tool requires wield. Ideally this would hook into the actual event to cancel the do-after but I am not rewriting upstream code right now
+        if (toolComponent.ToolRequiresWield)
+        {
+            if (TryComp<WieldableComponent>(tool, out var wieldable) && !wieldable.Wielded)
+            {
+                _popup.PopupClient(Loc.GetString("rcd-component-must-build-on-subfloor-message"), tool, user);
+                return false;
+            }
+        }
+        // GREENSHIFT END
 
         // check if the user allows using the tool
         var ev = new ToolUserAttemptUseEvent(target);

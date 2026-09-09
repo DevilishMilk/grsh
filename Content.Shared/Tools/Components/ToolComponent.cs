@@ -20,6 +20,13 @@ public sealed partial class ToolComponent : Component
 
     [DataField]
     public SoundSpecifier? UseSound;
+
+    /// <summary>
+    /// Greenshift - if the tool needs to be wielded in order to be used.
+    /// Requires WieldableComponent to function.
+    /// </summary>
+    [DataField]
+    public bool ToolRequiresWield;
 }
 
 /// <summary>

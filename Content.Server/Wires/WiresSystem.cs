@@ -13,6 +13,7 @@ using Content.Shared.Popups;
 using Content.Shared.Power;
 using Content.Shared.Tools;
 using Content.Shared.Tools.Components;
+using Content.Shared.Wieldable.Components;
 using Content.Shared.Wires;
 using Robust.Server.GameObjects;
 using Robust.Shared.Player;
@@ -412,6 +413,17 @@ public sealed class WiresSystem : SharedWiresSystem
 
         if (!TryComp(heldEntity, out ToolComponent? tool))
             return;
+
+        // Greenshift - return if tool needs to be wielded & is not wielded
+        if (tool.ToolRequiresWield)
+        {
+            if (TryComp<WieldableComponent>(heldEntity, out var wieldable) && !wieldable.Wielded)
+            {
+                _popupSystem.PopupEntity(Loc.GetString("wires-component-ui-tool-needs-wielded"), uid, player);
+                return;
+            }
+        }
+        // GREENSHIFT END
 
         TryDoWireAction(uid, player, heldEntity.Value, args.Id, args.Action, component, tool);
     }
