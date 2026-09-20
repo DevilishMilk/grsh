@@ -415,7 +415,7 @@ public sealed class WiresSystem : SharedWiresSystem
         if (!TryComp(heldEntity, out ToolComponent? tool))
             return;
 
-        // Greenshift - return if tool needs to be wielded & is not wielded
+        // GREENSHIFT START - return if tool needs to be wielded & is not wielded
         if (tool.ToolRequiresWield)
         {
             if (TryComp<WieldableComponent>(heldEntity, out var wieldable) && !wieldable.Wielded)
