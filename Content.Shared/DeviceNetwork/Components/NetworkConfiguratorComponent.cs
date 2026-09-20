@@ -38,6 +38,13 @@ public sealed partial class NetworkConfiguratorComponent : Component
     public EntityUid? DeviceLinkTarget;
 
     /// <summary>
+    /// Greenshift - if the configurator needs to be wielded in order to be used.
+    /// Requires WieldableComponent to function.
+    /// </summary>
+    [DataField]
+    public bool ConfiguratorRequiresWield;
+
+    /// <summary>
     /// The list of devices stored in the configurator
     /// </summary>
     [DataField]

@@ -19,6 +19,7 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using YamlDotNet.Core.Tokens;
 
 namespace Content.Server.Wires;
 
@@ -419,7 +420,7 @@ public sealed class WiresSystem : SharedWiresSystem
         {
             if (TryComp<WieldableComponent>(heldEntity, out var wieldable) && !wieldable.Wielded)
             {
-                _popupSystem.PopupEntity(Loc.GetString("wires-component-ui-tool-needs-wielded"), uid, player);
+                _popupSystem.PopupCursor(Loc.GetString("tool-needs-wield"), player);
                 return;
             }
         }

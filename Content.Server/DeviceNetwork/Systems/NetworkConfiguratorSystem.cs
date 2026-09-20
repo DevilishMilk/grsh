@@ -13,6 +13,7 @@ using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Content.Shared.UserInterface;
 using Content.Shared.Verbs;
+using Content.Shared.Wieldable.Components;
 using JetBrains.Annotations;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
@@ -336,6 +337,19 @@ public sealed class NetworkConfiguratorSystem : SharedNetworkConfiguratorSystem
     {
         if (!canReach || !target.HasValue)
             return;
+
+        // GREENSHIFT START - Wielded tools
+
+        if (configurator.ConfiguratorRequiresWield)
+        {
+            if (TryComp<WieldableComponent>(uid, out var wieldable) &&
+                !wieldable.Wielded)
+            {
+                _popupSystem.PopupCursor(Loc.GetString("tool-needs-wield"), user);
+                return;
+            }
+        }
+        // GREENSHIFT END
 
         DetermineMode(uid, configurator, target, user);
 

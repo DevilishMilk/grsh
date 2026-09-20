@@ -250,7 +250,7 @@ public abstract partial class SharedToolSystem : EntitySystem
         {
             if (TryComp<WieldableComponent>(tool, out var wieldable) && !wieldable.Wielded)
             {
-                _popup.PopupClient(Loc.GetString("rcd-component-must-build-on-subfloor-message"), tool, user);
+                _popup.PopupCursor(Loc.GetString("tool-needs-wield"), user);
                 return false;
             }
         }
