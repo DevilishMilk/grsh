@@ -19,7 +19,6 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using YamlDotNet.Core.Tokens;
 
 namespace Content.Server.Wires;
 
